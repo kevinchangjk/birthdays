@@ -1,5 +1,5 @@
 // counts the index for a leap year, so assumes 366 days total
-export function dateToIndex(date) {
+function dateToIndex(date) {
   const month = parseInt(date.substring(2));
   const day = parseInt(date.substring(0, 2));
 
@@ -35,4 +35,31 @@ export function dateToIndex(date) {
   }
 
   return totalDays(month) + day - 1;
+}
+
+function properDate(date) {
+  return date;
+}
+
+export class Birthday {
+  constructor(name, date, info) {
+    this.name = name;
+    this.date = date;
+    this.info = info;
+  }
+
+  birthDate() {
+    return dateToIndex(this.date);
+  }
+
+  isEarlierName(other) {
+    otherName = other.name;
+    return this.name < other.name;
+  }
+
+  display() {
+    console.log("Name: " + this.name);
+    console.log("Birth date: " + properDate(this.date));
+    console.log("Additional Information: " + this.info);
+  }
 }
