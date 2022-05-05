@@ -17,9 +17,7 @@ Additionally, terminal will run the script to check if today's date is anyone's 
 
 ## TODO
 
-1. Create the data structure to store the names and birthdays
-
-    - Also store your own birthdays into it, make sure to .gitignore it
-
+1. Add the sorting functionality to the database
 2. Create the querying function
 3. Create bash script for terminal
+4. Add your own birthdays to it
