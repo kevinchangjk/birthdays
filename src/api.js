@@ -66,7 +66,7 @@ export async function createDatabase(file) {
 
 export async function writeDatabase(database) {
   const res = JSON.stringify(database);
-  fs.writeFile("birthdays.json", res, function (error, result) {
+  fs.writeFile("../birthdays.json", res, function (error, result) {
     if (error) {
       console.log(error.message);
     }
@@ -74,7 +74,7 @@ export async function writeDatabase(database) {
 }
 
 export function readDatabase() {
-  const file = "./birthdays.json";
+  const file = "../birthdays.json";
   const res = JSON.parse(fs.readFileSync(file));
   return res;
 }
