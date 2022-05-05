@@ -4,7 +4,7 @@ import { AvlTree } from "./avl-tree.js";
 export class BirthDatabase {
   constructor() {
     for (let i = 0; i < 366; i++) {
-      this[i] = new AvlTree();
+      this[i] = [];
     }
   }
 
@@ -14,18 +14,28 @@ export class BirthDatabase {
     }
   }
 
+  rebuild(database) {
+    for (let i = 0; i < 366; i++) {
+      const day = database[i];
+      const date = day.map(function (birthday) {
+        return new Birthday(birthday.name, birthday.date, birthday.info);
+      });
+      this[i] = date;
+    }
+  }
+
   add(birthday) {
     const birth = new Birthday(birthday[0], birthday[1], birthday[2]);
     const date = birth.birthDate();
     const bucket = this[date];
-    bucket.add(birth);
+    bucket.push(birth);
   }
 
   remove(name) {}
 
   listAll() {
     for (let i = 0; i < 366; i++) {
-      this[i].list();
+      this[i].forEach((birthday) => birthday.display());
     }
   }
 }

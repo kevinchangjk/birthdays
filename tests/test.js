@@ -1,4 +1,4 @@
-import { createDatabase, readDatabase, rebuildDatabase } from "../api.js";
+import { createDatabase, readDatabase, rebuildDatabase } from "../src/api.js";
 import { AvlTree } from "../src/structures/avl-tree.js";
 import { BirthDatabase } from "../src/structures/birth-database.js";
 import database from "./birthdays.json" assert { type: "json" };
