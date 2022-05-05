@@ -67,6 +67,7 @@ export class BirthDatabase {
 
   queryName(name) {
     let count = 0;
+    let dispRes = "result";
     for (let i = 0; i < 366; i++) {
       const bucket = this[i];
       for (const birthday of bucket) {
@@ -76,6 +77,9 @@ export class BirthDatabase {
         }
       }
     }
-    console.log(`${count} results found`);
+    if (count != 1) {
+      dispRes += "s";
+    }
+    console.log(`${count} ${dispRes} found`);
   }
 }

@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { parse } from "csv-parse";
 import { BirthDatabase } from "./structures/birth-database.js";
+import { fileName } from "../file-name.js";
 
 // reads a .csv file to generate a database of birthdays
 export async function createDatabase(file) {
@@ -23,7 +24,7 @@ export async function createDatabase(file) {
 
 export async function writeDatabase(database) {
   const res = JSON.stringify(database);
-  fs.writeFile("../birthdays.json", res, function (error, result) {
+  fs.writeFile(fileName, res, function (error, result) {
     if (error) {
       console.log(error.message);
     }
@@ -31,8 +32,7 @@ export async function writeDatabase(database) {
 }
 
 export async function readDatabase() {
-  const file = "../birthdays.json";
-  const res = JSON.parse(fs.readFileSync(file));
+  const res = JSON.parse(fs.readFileSync(fileName));
   return await rebuildDatabase(res);
 }
 
@@ -40,9 +40,4 @@ export async function rebuildDatabase(database) {
   const res = new BirthDatabase();
   res.rebuild(database);
   return res;
-}
-
-export async function queryDate(date) {
-  const database = await readDatabase();
-  database.queryDate(date);
 }
