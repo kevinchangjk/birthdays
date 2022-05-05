@@ -39,3 +39,13 @@ export async function checkToday() {
 export async function queryName(name) {
   database.queryName(name);
 }
+
+export async function addEntry(entry) {
+  database.add(entry);
+  await writeDatabase(database);
+}
+
+export async function removeEntry(name) {
+  database.remove(name);
+  await writeDatabase(database);
+}

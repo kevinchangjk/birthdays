@@ -18,11 +18,6 @@ async function rebuildTest() {
   newDatabase.listAll();
 }
 
-async function readTest() {
-  const data = readDatabase();
-  data.listAll();
-}
-
 async function addTest() {
   const entry = ["Orange Guy", "1205", "Not important"];
   const data = readDatabase();
@@ -41,10 +36,15 @@ async function enumTest() {
   enumerateData();
 }
 
+async function removeTest() {
+  const data = await readDatabase();
+  data.remove("Guy");
+}
+
 // test();
 // treeTest();
 // rebuildTest();
-// readTest();
 // addTest();
-queryTest();
-// enumTest();
+// queryTest();
+enumTest();
+// removeTest();

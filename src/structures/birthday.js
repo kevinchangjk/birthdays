@@ -152,9 +152,9 @@ export class Birthday {
   }
 
   display() {
-    console.log(`Name: ${this.name}`);
+    console.log(`\nName: ${this.name}`);
     console.log(`Birthday: ${properDate(this.date)}`);
-    console.log(`Additional Info: ${this.info}\n`);
+    console.log(`Additional Info: ${this.info}`);
   }
 
   celebrate() {

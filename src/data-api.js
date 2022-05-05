@@ -37,7 +37,7 @@ export async function readDatabase() {
 }
 
 export async function rebuildDatabase(database) {
-  const res = new BirthDatabase();
+  var res = new BirthDatabase();
   res.rebuild(database);
   return res;
 }
