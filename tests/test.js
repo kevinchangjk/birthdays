@@ -3,8 +3,9 @@ import {
   readDatabase,
   rebuildDatabase,
   writeDatabase,
-  queryDate,
 } from "../src/data-api.js";
+
+import { enumerateData, queryDate } from "../src/user-api.js";
 // import database from "./birthdays.json" assert { type: "json" };
 
 async function test() {
@@ -34,9 +35,14 @@ async function queryTest() {
   queryDate(date);
 }
 
+async function enumTest() {
+  enumerateData();
+}
+
 // test();
 // treeTest();
 // rebuildTest();
 // readTest();
 // addTest();
-queryTest();
+// queryTest();
+enumTest();

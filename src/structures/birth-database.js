@@ -46,7 +46,7 @@ export class BirthDatabase {
       const date = this[i];
       if (date.length > 0) {
         console.log(
-          "--------------------------------------------------------------------------------"
+          "--------------------------------------------------------------------------------\n"
         );
         console.log(`On ${date[0].niceDate()}: \n`);
         date.forEach((birthday) => birthday.display());
