@@ -1,7 +1,10 @@
-import { createDatabase, readDatabase, rebuildDatabase } from "../src/api.js";
-import { AvlTree } from "../src/structures/avl-tree.js";
-import { BirthDatabase } from "../src/structures/birth-database.js";
-import database from "./birthdays.json" assert { type: "json" };
+import {
+  createDatabase,
+  readDatabase,
+  rebuildDatabase,
+  readd,
+} from "../src/api.js";
+// import database from "./birthdays.json" assert { type: "json" };
 
 async function test() {
   const filename = "../csv/birth.csv";
@@ -13,6 +16,13 @@ async function rebuildTest() {
   newDatabase.listAll();
 }
 
+async function readTest() {
+  const data = readd();
+  const newData = await rebuildDatabase(data);
+  newData.listAll();
+}
+
 // test();
 // treeTest();
-rebuildTest();
+// rebuildTest();
+readTest();
