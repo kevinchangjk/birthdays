@@ -7,22 +7,6 @@ export class BirthDatabase {
     }
   }
 
-  build(birthdays) {
-    for (let i = 0; i < birthdays.length; i++) {
-      this.add(birthdays[i]);
-    }
-  }
-
-  rebuild(database) {
-    for (let i = 0; i < 366; i++) {
-      const day = database[i];
-      const date = day.map(function (birthday) {
-        return new Birthday(birthday.name, birthday.date, birthday.info);
-      });
-      this[i] = date;
-    }
-  }
-
   add(birthday) {
     const birth = new Birthday(birthday[0], birthday[1], birthday[2]);
     const date = birth.dateIndex();
@@ -41,6 +25,22 @@ export class BirthDatabase {
 
   remove(name) {}
 
+  build(birthdays) {
+    for (let i = 0; i < birthdays.length; i++) {
+      this.add(birthdays[i]);
+    }
+  }
+
+  rebuild(database) {
+    for (let i = 0; i < 366; i++) {
+      const day = database[i];
+      const date = day.map(function (birthday) {
+        return new Birthday(birthday.name, birthday.date, birthday.info);
+      });
+      this[i] = date;
+    }
+  }
+
   listAll() {
     for (let i = 0; i < 366; i++) {
       const date = this[i];
@@ -55,9 +55,27 @@ export class BirthDatabase {
   }
 
   queryDate(date) {
-    const index = new Birthday("", date, "").dateIndex();
-    const bucket = this[index];
-    console.log(`On ${bucket[0].niceDate()}: \n`);
-    bucket.forEach((birthday) => birthday.display());
+    const temp = new Birthday("", date, "");
+    const bucket = this[temp.dateIndex()];
+    if (bucket.length == 0) {
+      console.log(`No birthdays found on ${temp.niceDate()}`);
+    } else {
+      console.log(`On ${bucket[0].niceDate()}: \n`);
+      bucket.forEach((birthday) => birthday.display());
+    }
+  }
+
+  queryName(name) {
+    let count = 0;
+    for (let i = 0; i < 366; i++) {
+      const bucket = this[i];
+      for (const birthday of bucket) {
+        if (birthday.name.includes(name)) {
+          birthday.display();
+          count++;
+        }
+      }
+    }
+    console.log(`${count} results found`);
   }
 }

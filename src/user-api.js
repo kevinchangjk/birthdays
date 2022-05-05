@@ -14,3 +14,8 @@ export async function queryDate(date) {
   const database = await readDatabase();
   database.queryDate(date);
 }
+
+export async function queryName(name) {
+  const database = await readDatabase();
+  database.queryName(name);
+}
