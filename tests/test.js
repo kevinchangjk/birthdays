@@ -2,7 +2,7 @@ import {
   createDatabase,
   readDatabase,
   rebuildDatabase,
-  readd,
+  writeDatabase,
 } from "../src/api.js";
 // import database from "./birthdays.json" assert { type: "json" };
 
@@ -17,12 +17,21 @@ async function rebuildTest() {
 }
 
 async function readTest() {
-  const data = readd();
+  const data = readDatabase();
   const newData = await rebuildDatabase(data);
   newData.listAll();
+}
+
+async function addTest() {
+  const entry = ["Some guy", "1205", "Not important"];
+  const data = readDatabase();
+  const newData = await rebuildDatabase(data);
+  newData.add(entry);
+  writeDatabase(newData);
 }
 
 // test();
 // treeTest();
 // rebuildTest();
 readTest();
+// addTest();

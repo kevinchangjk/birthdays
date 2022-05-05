@@ -57,29 +57,26 @@ export async function createDatabase(file) {
     })
     .on("end", function () {
       database.build(birthdays);
-      const res = JSON.stringify(database);
-      fs.writeFile("birthdays.json", res, function (error, result) {
-        if (error) {
-          console.log(error.message);
-        }
-      });
+      writeDatabase(database);
     })
     .on("error", function (error) {
       console.log(error.message);
     });
 }
 
-export async function readDatabase() {
-  const file = "./birthdays.json";
-  const database = async () => {
-    try {
-      const data = await fetch(file);
-      const response = await data.json();
-    } catch (error) {
-      console.log(error);
+export async function writeDatabase(database) {
+  const res = JSON.stringify(database);
+  fs.writeFile("birthdays.json", res, function (error, result) {
+    if (error) {
+      console.log(error.message);
     }
-  };
-  return await database(file);
+  });
+}
+
+export function readDatabase() {
+  const file = "./birthdays.json";
+  const res = JSON.parse(fs.readFileSync(file));
+  return res;
 }
 
 export async function rebuildDatabase(database) {

@@ -1,5 +1,4 @@
 import { Birthday } from "./birthday.js";
-import { AvlTree } from "./avl-tree.js";
 
 export class BirthDatabase {
   constructor() {
@@ -26,7 +25,7 @@ export class BirthDatabase {
 
   add(birthday) {
     const birth = new Birthday(birthday[0], birthday[1], birthday[2]);
-    const date = birth.birthDate();
+    const date = birth.dateIndex();
     const bucket = this[date];
     bucket.push(birth);
   }
@@ -35,7 +34,14 @@ export class BirthDatabase {
 
   listAll() {
     for (let i = 0; i < 366; i++) {
-      this[i].forEach((birthday) => birthday.display());
+      const date = this[i];
+      if (date.length > 0) {
+        console.log(
+          "--------------------------------------------------------------------------------"
+        );
+        console.log(`On ${date[0].niceDate()}: \n`);
+        date.forEach((birthday) => birthday.display());
+      }
     }
   }
 }

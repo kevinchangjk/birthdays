@@ -48,8 +48,12 @@ export class Birthday {
     this.info = info;
   }
 
-  birthDate() {
+  dateIndex() {
     return dateToIndex(this.date);
+  }
+
+  niceDate() {
+    return properDate(this.date);
   }
 
   isEarlierName(other) {
@@ -58,8 +62,8 @@ export class Birthday {
   }
 
   display() {
-    console.log("Name: " + this.name);
-    console.log("Birth date: " + properDate(this.date));
-    console.log("Additional Information: " + this.info);
+    console.log(`Name: ${this.name}`);
+    console.log(`Birth date: ${properDate(this.date)}`);
+    console.log(`Additional Information: ${this.info}\n`);
   }
 }
