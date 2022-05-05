@@ -121,8 +121,11 @@ export class Birthday {
   }
 
   isEarlierName(other) {
-    otherName = other.name;
     return this.name < other.name;
+  }
+
+  isEqual(other) {
+    return this.name == other.name;
   }
 
   display() {

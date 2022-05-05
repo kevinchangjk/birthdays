@@ -27,7 +27,16 @@ export class BirthDatabase {
     const birth = new Birthday(birthday[0], birthday[1], birthday[2]);
     const date = birth.dateIndex();
     const bucket = this[date];
-    bucket.push(birth);
+
+    let index = 0;
+    while (bucket[index].isEarlierName(birth)) {
+      index++;
+    }
+    if (birth.isEqual(bucket[index])) {
+      bucket[index] = birth;
+    } else {
+      bucket.splice(index, 0, birth);
+    }
   }
 
   remove(name) {}

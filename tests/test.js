@@ -23,7 +23,7 @@ async function readTest() {
 }
 
 async function addTest() {
-  const entry = ["Some guy", "1205", "Not important"];
+  const entry = ["Orange Guy", "1205", "Not important"];
   const data = readDatabase();
   const newData = await rebuildDatabase(data);
   newData.add(entry);
