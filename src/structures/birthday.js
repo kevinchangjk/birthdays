@@ -38,7 +38,71 @@ function dateToIndex(date) {
 }
 
 function properDate(date) {
-  return date;
+  const month = parseInt(date.substring(2));
+  const day = parseInt(date.substring(0, 2));
+  let dispMonth;
+  let dispDay;
+  switch (month) {
+    case 1:
+      dispMonth = "January";
+      break;
+    case 2:
+      dispMonth = "February";
+      break;
+    case 3:
+      dispMonth = "March";
+      break;
+    case 4:
+      dispMonth = "April";
+      break;
+    case 5:
+      dispMonth = "May";
+      break;
+    case 6:
+      dispMonth = "June";
+      break;
+    case 7:
+      dispMonth = "July";
+      break;
+    case 8:
+      dispMonth = "August";
+      break;
+    case 9:
+      dispMonth = "September";
+      break;
+    case 10:
+      dispMonth = "October";
+      break;
+    case 11:
+      dispMonth = "November";
+      break;
+    case 12:
+      dispMonth = "December";
+      break;
+    default:
+      dispMonth = "";
+      break;
+  }
+
+  switch (day) {
+    case 1:
+    case 21:
+      dispDay = `${day}st`;
+      break;
+    case 2:
+    case 22:
+      dispDay = `${day}nd`;
+      break;
+    case 3:
+    case 23:
+      dispDay = `${day}rd`;
+      break;
+    default:
+      dispDay = `${day}th`;
+      break;
+  }
+
+  return `${dispDay} ${dispMonth}`;
 }
 
 export class Birthday {
@@ -63,7 +127,7 @@ export class Birthday {
 
   display() {
     console.log(`Name: ${this.name}`);
-    console.log(`Birth date: ${properDate(this.date)}`);
-    console.log(`Additional Information: ${this.info}\n`);
+    console.log(`Birthday: ${properDate(this.date)}`);
+    console.log(`Additional Info: ${this.info}\n`);
   }
 }
