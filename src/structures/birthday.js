@@ -133,4 +133,10 @@ export class Birthday {
     console.log(`Birthday: ${properDate(this.date)}`);
     console.log(`Additional Info: ${this.info}\n`);
   }
+
+  celebrate() {
+    const emoji = null; // randomly pick one of 💀🚀🔥
+    console.log(`${this.name} has levelled up!`);
+    console.log(`In case you forgot: ${this.info}\n`);
+  }
 }

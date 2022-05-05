@@ -82,4 +82,13 @@ export class BirthDatabase {
     }
     console.log(`${count} ${dispRes} found`);
   }
+
+  checkToday(date) {
+    const temp = new Birthday("", "1205", "");
+    const bucket = this[temp.dateIndex()];
+    if (bucket.length > 0) {
+      console.log(`🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
+      bucket.forEach((birthday) => birthday.celebrate());
+    }
+  }
 }
