@@ -53,4 +53,11 @@ export class BirthDatabase {
       }
     }
   }
+
+  queryDate(date) {
+    const index = new Birthday("", date, "").dateIndex();
+    const bucket = this[index];
+    console.log(`On ${bucket[0].niceDate()}: \n`);
+    bucket.forEach((birthday) => birthday.display());
+  }
 }

@@ -3,7 +3,8 @@ import {
   readDatabase,
   rebuildDatabase,
   writeDatabase,
-} from "../src/api.js";
+  queryDate,
+} from "../src/data-api.js";
 // import database from "./birthdays.json" assert { type: "json" };
 
 async function test() {
@@ -18,20 +19,24 @@ async function rebuildTest() {
 
 async function readTest() {
   const data = readDatabase();
-  const newData = await rebuildDatabase(data);
-  newData.listAll();
+  data.listAll();
 }
 
 async function addTest() {
   const entry = ["Orange Guy", "1205", "Not important"];
   const data = readDatabase();
-  const newData = await rebuildDatabase(data);
-  newData.add(entry);
+  data.add(entry);
   writeDatabase(newData);
+}
+
+async function queryTest() {
+  const date = "1205";
+  queryDate(date);
 }
 
 // test();
 // treeTest();
 // rebuildTest();
-readTest();
+// readTest();
 // addTest();
+queryTest();
