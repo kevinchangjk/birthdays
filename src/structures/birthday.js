@@ -105,6 +105,29 @@ function properDate(date) {
   return `${dispDay} ${dispMonth}`;
 }
 
+function randomEmoji() {
+  const choices = [
+    "🔥",
+    "💀",
+    "👻",
+    "💩",
+    "🤡",
+    "😈",
+    "👽",
+    "🤖",
+    "💃",
+    "🐒",
+    "🐍",
+    "🌈",
+    "🌚",
+    "🚓",
+    "🚑",
+    "🚀",
+    "🔞",
+  ];
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
 export class Birthday {
   constructor(name, date, info) {
     this.name = name;
@@ -135,8 +158,8 @@ export class Birthday {
   }
 
   celebrate() {
-    const emoji = null; // randomly pick one of 💀🚀🔥
+    const emoji = randomEmoji();
     console.log(`${this.name} has levelled up!`);
-    console.log(`In case you forgot: ${this.info}\n`);
+    console.log(`In case you forgot: ${this.info} ${emoji}\n`);
   }
 }
