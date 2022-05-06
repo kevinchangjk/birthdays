@@ -33,7 +33,7 @@ if (args.length != 1) {
           while (!validInput) {
             console.log("");
             confirmation = prompt(
-              `${fileName} has already been created. Overwrite? (y/n) `
+              `${fileName} has already been created. Overwrite? (y/n/q) `
             );
             if (
               confirmation.toLowerCase() == "q" ||

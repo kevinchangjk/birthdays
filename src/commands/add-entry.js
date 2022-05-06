@@ -12,13 +12,44 @@ let validEntry = false;
 while (!validEntry) {
   console.log("");
   name = prompt("Name: ");
-  // add data validation loop for birthday
-  date = prompt("Birthday (in DDMM format): ");
+  let validDate = false;
+  while (!validDate) {
+    console.log("");
+    date = prompt("Birthday (in DDMM format): ");
+    if (date.length === 4) {
+      const day = parseInt(date.substring(0, 2));
+      const month = parseInt(date.substring(2));
+      if (
+        Number.isInteger(day) &&
+        Number.isInteger(month) &&
+        day > 0 &&
+        day <= 31 &&
+        month > 0 &&
+        month <= 12
+      ) {
+        if (month === 2) {
+          if (day <= 29) {
+            validDate = true;
+          }
+        } else if (month === 4 || month === 6 || month === 9 || month === 11) {
+          if (day <= 30) {
+            validDate = true;
+          }
+        } else {
+          validDate = true;
+        }
+      }
+    }
+    if (!validDate) {
+      console.log("Enter using proper DDMM format, eg. 1205 for 12th May");
+    }
+  }
+  console.log("");
   info = prompt("Additional Information: ");
   let validConfirm = false;
   while (!validConfirm) {
     console.log("");
-    const confirmation = prompt("Confirm entry? (y/n) ");
+    const confirmation = prompt("Confirm entry? (y/n/q) ");
     if (confirmation.toLowerCase() == "q") {
       console.log("Cancelling entry...");
       validConfirm = true;

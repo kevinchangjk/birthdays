@@ -48,7 +48,7 @@ if (args.length != 1) {
     while (!validInput) {
       console.log("");
       confirmation = prompt(
-        `Confirm removal of entry no. ${entry} for ${toRemove.name}? (y/n) `
+        `Confirm removal of entry no. ${entry} for ${toRemove.name}? (y/n/q) `
       );
       if (
         confirmation.toLowerCase() == "n" ||
