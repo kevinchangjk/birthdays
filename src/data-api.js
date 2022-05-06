@@ -1,7 +1,14 @@
 import * as fs from "fs";
 import { parse } from "csv-parse";
 import { BirthDatabase } from "./structures/birth-database.js";
-import { fileName } from "../file-name.js";
+import * as path from "path";
+import { fileURLToPath } from "url";
+
+// file name for birthday database, by default: "birthdays.json"
+export const fileName = "birthdays.json";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const fileURL = path.join(__dirname, "..", fileName);
 
 // reads a .csv file to generate a database of birthdays
 export async function createDatabase(file) {
@@ -24,7 +31,7 @@ export async function createDatabase(file) {
 
 export async function writeDatabase(database) {
   const res = JSON.stringify(database);
-  fs.writeFile(fileName, res, function (error, result) {
+  fs.writeFile(fileURL, res, function (error, result) {
     if (error) {
       console.log(error.message);
     }
@@ -32,7 +39,7 @@ export async function writeDatabase(database) {
 }
 
 export async function readDatabase() {
-  const res = JSON.parse(fs.readFileSync(fileName));
+  const res = JSON.parse(fs.readFileSync(fileURL));
   return await rebuildDatabase(res);
 }
 
