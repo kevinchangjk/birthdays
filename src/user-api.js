@@ -8,7 +8,7 @@ import {
 const database = await readDatabase();
 
 export function enumerateData() {
-  database.listAll();
+  return database.listAll();
 }
 
 export function queryDate(date) {

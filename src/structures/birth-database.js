@@ -56,16 +56,14 @@ export class BirthDatabase {
   }
 
   listAll() {
+    const included = [];
     for (let i = 0; i < 366; i++) {
       const date = this[i];
       if (date.length > 0) {
-        console.log(`On ${date[0].niceDate()}`);
-        date.forEach((birthday) => birthday.display());
-        console.log(
-          "--------------------------------------------------------------------------------\n"
-        );
+        included.push(this[i]);
       }
     }
+    return included;
   }
 
   queryDate(date) {
