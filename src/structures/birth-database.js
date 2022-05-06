@@ -133,20 +133,15 @@ export class BirthDatabase {
   }
 
   queryName(name) {
-    let count = 0;
-    let dispRes = "result";
+    const included = [];
     for (let i = 0; i < 366; i++) {
       const bucket = this[i];
       for (const birthday of bucket) {
         if (birthday.name.includes(name)) {
-          birthday.display();
-          count++;
+          included.push(birthday);
         }
       }
     }
-    if (count != 1) {
-      dispRes += "s";
-    }
-    console.log(`${count} ${dispRes} found`);
+    return included;
   }
 }

@@ -16,7 +16,7 @@ export function queryDate(date) {
 }
 
 export function queryName(name) {
-  database.queryName(name);
+  return database.queryName(name);
 }
 
 export async function addEntry(entry) {
