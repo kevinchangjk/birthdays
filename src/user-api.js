@@ -28,12 +28,22 @@ export async function enumerateData() {
 }
 
 export async function queryDate(date) {
-  database.queryDate(date);
+  const bucket = database.queryDate(date);
+  if (bucket.length == 0) {
+    console.log(`No birthdays found on ${temp.niceDate()}`);
+  } else {
+    console.log(`On ${bucket[0].niceDate()}: `);
+    bucket.forEach((birthday) => birthday.display());
+  }
 }
 
 export async function checkToday() {
   const date = getDate();
-  database.checkToday(date);
+  const bucket = database.queryDate(date);
+  if (bucket.length > 0) {
+    console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
+    bucket.forEach((birthday) => birthday.celebrate());
+  }
 }
 
 export async function queryName(name) {

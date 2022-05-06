@@ -129,12 +129,7 @@ export class BirthDatabase {
   queryDate(date) {
     const temp = new Birthday("", date, "");
     const bucket = this[temp.dateIndex()];
-    if (bucket.length == 0) {
-      console.log(`No birthdays found on ${temp.niceDate()}`);
-    } else {
-      console.log(`On ${bucket[0].niceDate()}: \n`);
-      bucket.forEach((birthday) => birthday.display());
-    }
+    return bucket;
   }
 
   queryName(name) {
@@ -153,14 +148,5 @@ export class BirthDatabase {
       dispRes += "s";
     }
     console.log(`${count} ${dispRes} found`);
-  }
-
-  checkToday(date) {
-    const temp = new Birthday("", date, "");
-    const bucket = this[temp.dateIndex()];
-    if (bucket.length > 0) {
-      console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
-      bucket.forEach((birthday) => birthday.celebrate());
-    }
   }
 }

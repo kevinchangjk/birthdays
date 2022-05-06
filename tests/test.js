@@ -45,6 +45,6 @@ async function removeTest() {
 // treeTest();
 // rebuildTest();
 // addTest();
-// queryTest();
-enumTest();
+queryTest();
+// enumTest();
 // removeTest();
