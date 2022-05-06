@@ -1,0 +1,1 @@
+node ../src/commands/build.js "../csv/birth.csv"

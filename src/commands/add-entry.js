@@ -28,7 +28,7 @@ while (!validEntry) {
       validConfirm = true;
     } else if (confirmation.toLowerCase() == "y") {
       const entry = [name, date, info];
-      addEntry(entry);
+      await addEntry(entry);
       console.log(`Added entry for ${name}`);
       validConfirm = true;
       validEntry = true;

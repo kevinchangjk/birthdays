@@ -1,6 +1,6 @@
 import { enumerateData } from "../user-api.js";
 
-const included = enumerateData();
+const included = await enumerateData();
 for (const date of included) {
   console.log(`On ${date[0].niceDate()}`);
   date.forEach((birthday) => birthday.display());

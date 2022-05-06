@@ -19,19 +19,19 @@ function getDate() {
 const args = process.argv.slice(2);
 if (args.length == 0) {
   const date = getDate();
-  const bucket = queryDate("1205");
+  const bucket = queryDate(date);
   if (bucket.length > 0) {
     console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
     bucket.forEach((birthday) => birthday.celebrate());
   }
 } else {
-  args.forEach(function (arg) {
-    const bucket = queryDate(arg);
+  for (const arg of args) {
+    const bucket = await queryDate(arg);
     if (bucket.length === 0) {
       console.log(`No birthdays found on ${temp.niceDate()}`);
     } else {
       console.log(`On ${bucket[0].niceDate()}: `);
       bucket.forEach((birthday) => birthday.display());
     }
-  });
+  }
 }

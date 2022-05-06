@@ -9,7 +9,7 @@ if (args.length != 1) {
   console.log("Please input a single name in quotes");
 } else {
   let removing = true;
-  const results = queryName(args[0]);
+  const results = await queryName(args[0]);
   let count = results.length;
   let dispRes = count == 1 ? "result" : "results";
   for (let i = 0; i < count; i++) {
@@ -27,7 +27,7 @@ if (args.length != 1) {
     console.log("");
     entry = prompt("Remove which entry? Enter just the number here: ");
     if (entry.toLowerCase() == "q") {
-      console.log("Cancelling removal");
+      console.log("Cancelling removal...");
       validInput = true;
       removing = false;
     } else if (
@@ -54,10 +54,10 @@ if (args.length != 1) {
         confirmation.toLowerCase() == "n" ||
         confirmation.toLowerCase() == "q"
       ) {
-        console.log("Cancelling removal");
+        console.log("Cancelling removal...");
         validInput = true;
       } else if (confirmation.toLowerCase() == "y") {
-        removeEntry(toRemove);
+        await removeEntry(toRemove);
         console.log(`Removed entry no. ${entry} for ${toRemove.name}`);
         validInput = true;
       } else {
