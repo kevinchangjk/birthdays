@@ -24,7 +24,7 @@ export async function addEntry(entry) {
   await writeDatabase(database);
 }
 
-export async function removeEntry(name) {
-  database.remove(name);
+export async function removeEntry(entry) {
+  database.remove(entry);
   await writeDatabase(database);
 }

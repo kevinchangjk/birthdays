@@ -1,0 +1,1 @@
+node ../src/commands/query-name.js "Chang"

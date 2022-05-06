@@ -29,7 +29,7 @@ async function queryTest() {
   const date = "1205";
   queryDate(date);
   const name = "Chang";
-  // queryName(name);
+  queryName(name);
 }
 
 async function enumTest() {

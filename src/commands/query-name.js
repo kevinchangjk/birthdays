@@ -8,5 +8,5 @@ args.forEach(function (arg) {
   for (const result of results) {
     result.display();
   }
-  console.log(`${count} ${dispRes} found`);
+  console.log(`\n${count} ${dispRes} found`);
 });
