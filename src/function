@@ -1,0 +1,35 @@
+#!/bin/bash
+
+birthdays () {
+  case $1 in 
+    "name") 
+      args=( "$@" );
+      delete=$1;
+      names=( "${args[@]/$delete}" );
+      node "$COMMANDS/query-name.js" $names
+      ;;
+    "date")
+
+      ;;
+    "list")
+      
+      ;;
+    "add")
+
+      ;;
+    "remove")
+
+      ;;
+    "build")
+
+      ;;
+    *)
+      echo "Invalid input, add one of the following commands:
+    'name' - query for name(s)
+    'date' query for date(s)
+    'list' - list out all recorded entries
+    'add' - add an entry for a birthday
+    'remove' remove an entry for a birthday";
+      ;;
+  esac
+}

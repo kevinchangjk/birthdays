@@ -1,1 +1,3 @@
+#! bin/bash
+
 node ../src/commands/remove-entry.js "Chang"
