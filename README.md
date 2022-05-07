@@ -65,7 +65,7 @@ The package supports a few operations to interact with the database.
   ```
 - **Search by Name**: Input one or more names (or just strings actually), and get entries that match the names. This operation is case-insensitive.
   ```bash
-  birthdays name "Kevin" "chang" "kevinchangjk"
+  birthdays name "kevin" "CHANG"
   ```
 - **Search by Date**: Input one or more dates (in DDMM format), and get entries that match the dates.
   ```bash
@@ -111,7 +111,3 @@ Looking at how I might use this, I can see myself potentially working towards tw
    - The system will then, on that many days beforehand, and every day afterwards, remind you in the terminal.
 
 2. Expanding to more events than birthdays. So then it would be able to store items such as holidays, anniversaries (for people who are always getting scolded for forgetting their anniversaries).
-
-## TODO
-
-1. Add your own birthdays to it
