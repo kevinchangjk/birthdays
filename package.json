@@ -2,8 +2,8 @@
   "type": "module",
   "dependencies": {
     "csv": "^6.0.5",
+    "csv-parse": "^5.0.4",
     "fs": "^0.0.1-security",
-    "prompt-sync": "^4.2.0",
-    "sqlite3": "^5.0.6"
+    "prompt-sync": "^4.2.0"
   }
 }

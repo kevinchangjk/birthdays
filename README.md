@@ -13,6 +13,7 @@ To ensure full functionality, make sure that you have the following node modules
 - `fs`: part of Node.js core
 - `module`: local to npm
 - `csv-parse`: used for reading from the `.csv` files
+- `prompt-sync`: used for reading inputs from user
 
 ## Setup
 
