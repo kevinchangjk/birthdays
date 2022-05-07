@@ -22,7 +22,7 @@ To ensure full functionality, make sure that you have the following node modules
    ```bash
    source setup
    ```
-   This allows you to use the `birthdays` function for step 3 and 4, and saves the path to the package directory for step 5.
+   This allows you to use the `birthdays` function for step 3 and 4.
 3. Create a `.csv` file containing all birthdays you want to store, together with the name of the person, and additional notes if necessary, and store it inside the package directory.
 4. Run the following command to initialise the data. Suppose your `.csv` file is saved as `birthdays.csv`, then you should run:
 
@@ -32,11 +32,11 @@ To ensure full functionality, make sure that you have the following node modules
 
    Or replace `./birthdays.csv` with whatever is the relative path to the file.
 
-5. Add these lines to your `.bashrc`, or whichever shell config file you are using. You will need the absolute path to the package directory, which will be saved as the variable `$BIRTHDAYS_DIR` after step 2.
+5. Find the absolute path to the package directory, using the command `pwd` in your shell. Copy it, then add these lines to your `.bashrc`, or whichever shell config file you are using. The absolute path will be saved as the variable `$BIRTHDAYS_DIR`.
 
    ```bash
-   # if my url is ~/.bash/birthdays, I can replace the line below with
-   # cd ~/.bash/birthdays;
+   # if my url is ~/.bash/birthdays
+   BIRTHDAYS_DIR="~/.bash/birthdays";
    cd $BIRTHDAYS_DIR;
    source setup;
    cd -;
