@@ -32,15 +32,45 @@ if (args.length == 0) {
   }
 } else {
   // with arguments given, it queries for all dates passed through
-  for (const arg of args) {
-    const bucket = await queryDate(arg);
-    console.log("\n----------------------------------------");
-    if (bucket.length === 0) {
-      const temp = new Birthday("", arg, "");
-      console.log(`No birthdays found on ${temp.niceDate()}`);
+  for (const date of args) {
+    let validDate = false;
+    if (date.length === 4) {
+      const day = parseInt(date.substring(0, 2));
+      const month = parseInt(date.substring(2));
+      if (
+        Number.isInteger(day) &&
+        Number.isInteger(month) &&
+        day > 0 &&
+        day <= 31 &&
+        month > 0 &&
+        month <= 12
+      ) {
+        if (month === 2) {
+          if (day <= 29) {
+            validDate = true;
+          }
+        } else if (month === 4 || month === 6 || month === 9 || month === 11) {
+          if (day <= 30) {
+            validDate = true;
+          }
+        } else {
+          validDate = true;
+        }
+      }
+    }
+    if (validDate) {
+      const bucket = await queryDate(date);
+      console.log("\n----------------------------------------");
+      if (bucket.length === 0) {
+        const temp = new Birthday("", date, "");
+        console.log(`No birthdays found on ${temp.niceDate()}`);
+      } else {
+        console.log(`On ${bucket[0].niceDate()}: `);
+        bucket.forEach((birthday) => birthday.display());
+      }
     } else {
-      console.log(`On ${bucket[0].niceDate()}: `);
-      bucket.forEach((birthday) => birthday.display());
+      console.log("\n----------------------------------------");
+      console.log(`${date} is not a valid date in DDMM format`);
     }
   }
 }
