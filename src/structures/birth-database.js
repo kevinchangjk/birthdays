@@ -22,13 +22,17 @@ export class BirthDatabase {
       bucket.push(birth);
     } else {
       let index = 0;
-      while (bucket[index].isEarlierName(birth)) {
+      while (index < bucket.length && bucket[index].isEarlierName(birth)) {
         index++;
       }
-      if (birth.isEqual(bucket[index])) {
-        bucket[index] = birth;
+      if (index < bucket.length) {
+        if (birth.isEqual(bucket[index])) {
+          bucket[index] = birth;
+        } else {
+          bucket.splice(index, 0, birth);
+        }
       } else {
-        bucket.splice(index, 0, birth);
+        bucket.push(birth);
       }
     }
   }
