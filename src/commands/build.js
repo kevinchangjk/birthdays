@@ -1,26 +1,25 @@
 import * as fs from "fs";
 import { buildData } from "../user-api.js";
 import { createRequire } from "module";
-import * as path from "path";
-import { fileURLToPath } from "url";
-import { fileName } from "../data-api.js";
+import { fileName, fileURL } from "../data-api.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 const prompt = require("prompt-sync")({ sigint: true });
 
-const fileURL = path.join(__dirname, "../..", fileName);
 const args = process.argv.slice(2);
 
+// can only build from one .csv file
 if (args.length != 1) {
   console.log("Please input a single .csv file");
 } else {
   const csvFile = args[0];
   fs.access(fileURL, function (err) {
     if (err) {
+      // file doesn't exist, create immediately
       buildData(csvFile);
       console.log(`Created ${fileName} from ${csvFile}`);
     } else {
+      // file already exists, check if user wishes to overwrite
       let confirmation;
       let validInput = false;
       while (!validInput) {

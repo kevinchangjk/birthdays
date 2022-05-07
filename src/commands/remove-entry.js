@@ -5,6 +5,9 @@ const require = createRequire(import.meta.url);
 const prompt = require("prompt-sync")({ sigint: true });
 
 const args = process.argv.slice(2);
+
+// if zero arguments, or more than 1 argument
+// should only remove entries one at a time
 if (args.length != 1) {
   console.log("Please input a single name in quotes");
 } else {
@@ -12,6 +15,7 @@ if (args.length != 1) {
   const results = await queryName(args[0]);
   let count = results.length;
   let dispRes = count == 1 ? "result" : "results";
+  // prints out all entries and numbers them for user to choose
   for (let i = 0; i < count; i++) {
     console.log(`\nEntry no. ${i + 1}`);
     results[i].display();
@@ -23,6 +27,7 @@ if (args.length != 1) {
   }
   let entry;
   let validInput = false;
+  // gets user input on entry number
   while (removing && !validInput) {
     console.log("");
     entry = prompt("Remove which entry? Enter just the number here: ");
@@ -41,6 +46,7 @@ if (args.length != 1) {
     }
   }
 
+  // get confirmation for user to remove
   if (removing) {
     const toRemove = results[entry - 1];
     validInput = false;

@@ -9,11 +9,14 @@ let name;
 let date;
 let info;
 let validEntry = false;
+
+// loop for inputting entry
 while (!validEntry) {
   console.log(
     "\n----------------------------------------\nInput the details below"
   );
   let validName = false;
+  // if input name is invalid, which is empty
   while (!validName) {
     console.log("");
     name = prompt("Name: ");
@@ -24,6 +27,7 @@ while (!validEntry) {
     }
   }
   let validDate = false;
+  // if input date is invalid, not in DDMM format
   while (!validDate) {
     console.log("");
     date = prompt("Birthday (in DDMM format): ");
@@ -56,11 +60,13 @@ while (!validEntry) {
     }
   }
   console.log("");
-  info = prompt("Additional Information: ");
+  info = prompt("Notes: ");
+  // additional information can be left blank, in which case the default is "Nothing actually"
   if (info == "") {
     info = "Nothing actually";
   }
   let validConfirm = false;
+  // if confirmation is invalid
   while (!validConfirm) {
     console.log("");
     const confirmation = prompt("Confirm entry? (y/n/q) ");
