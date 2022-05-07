@@ -61,10 +61,6 @@ while (!validEntry) {
   }
   console.log("");
   info = prompt("Notes: ");
-  // additional information can be left blank, in which case the default is "Nothing actually"
-  if (info == "") {
-    info = "Nothing actually";
-  }
   let validConfirm = false;
   // if confirmation is invalid
   while (!validConfirm) {

@@ -166,6 +166,10 @@ export class Birthday {
   celebrate() {
     const emoji = randomEmoji();
     console.log(`${this.name} has levelled up!`);
-    console.log(`In case you forgot: ${this.info} ${emoji}\n`);
+    console.log(
+      `In case you forgot: ${
+        this.info == "" ? "Never mind, nothing important" : this.info
+      } ${emoji}\n`
+    );
   }
 }
