@@ -6,5 +6,7 @@ export COMMANDS="$SRC/commands";
 
 source $SRC/function;
 
+# file name for birthdays data base, by default: "birthdays.json"
 export BIRTHDAYS_FILE="birthdays.json";
+
 export BIRTHDAYS_URL="$BIRTHDAYS/$BIRTHDAYS_FILE";

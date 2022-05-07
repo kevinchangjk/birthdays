@@ -1,12 +1,18 @@
 import { Birthday } from "./birthday.js";
 
+/**
+ * Stores the entries of Birthdays.
+ */
 export class BirthDatabase {
+  // initializes an array of length 366, one for each day
   constructor() {
     for (let i = 0; i < 366; i++) {
       this[i] = [];
     }
   }
 
+  // adds an entry to the appropriate index, but also ensures that it is sorted
+  // if there is already an entry with the same name, then it is overwritten
   add(birthday) {
     const birth = new Birthday(birthday[0], birthday[1], birthday[2]);
     const date = birth.dateIndex();
@@ -27,6 +33,7 @@ export class BirthDatabase {
     }
   }
 
+  // removes a specified entry by checking in the same index for the same name
   remove(entry) {
     const bucket = this[entry.dateIndex()];
     let index;
@@ -39,12 +46,14 @@ export class BirthDatabase {
     bucket.splice(index, 1);
   }
 
+  // records down all entries passed through as an array of arrays of information
   build(birthdays) {
     for (let i = 0; i < birthdays.length; i++) {
       this.add(birthdays[i]);
     }
   }
 
+  // rebuilds database from parsing the JSON object
   rebuild(database) {
     for (let i = 0; i < 366; i++) {
       const day = database[i];
@@ -55,6 +64,7 @@ export class BirthDatabase {
     }
   }
 
+  // enumerates all entries
   listAll() {
     const included = [];
     for (let i = 0; i < 366; i++) {
@@ -66,12 +76,14 @@ export class BirthDatabase {
     return included;
   }
 
+  // returns the index indicated by the date
   queryDate(date) {
     const temp = new Birthday("", date, "");
     const bucket = this[temp.dateIndex()];
     return bucket;
   }
 
+  // returns all entries that the search string is included in the name of the entry
   queryName(name) {
     const included = [];
     for (let i = 0; i < 366; i++) {
