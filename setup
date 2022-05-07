@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# url to package directory
 BIRTHDAYS=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
 SRC="$BIRTHDAYS/src";
 export COMMANDS="$SRC/commands";
 
+# sources the function script, to use the "birthdays" function
 source $SRC/function;
 
 # file name for birthdays data base, by default: "birthdays.json"
 export BIRTHDAYS_FILE="birthdays.json";
 
+# absolute url for the birhdays file
 export BIRTHDAYS_URL="$BIRTHDAYS/$BIRTHDAYS_FILE";

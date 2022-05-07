@@ -1,37 +1,45 @@
 #!/bin/bash
 
+# main function to use for all operations
 birthdays () {
   case $1 in 
+    # query by name
     "name") 
       args=( "$@" );
       delete=$1;
       names=( "${args[@]/$delete}" );
       node "$COMMANDS/query-name.js" $names
       ;;
+    # query by date
     "date")
       args=( "$@" );
       delete=$1;
       dates=( "${args[@]/$delete}" );
       node "$COMMANDS/query-date.js" $dates
       ;;
+    # enumerate all entries
     "list")
       node "$COMMANDS/enumerate.js"
       ;;
+    # add entry
     "add")
       node "$COMMANDS/add-entry.js"
       ;;
+    # remove entry
     "remove")
       args=( "$@" );
       delete=$1;
       name=( "${args[@]/$delete}" );
       node "$COMMANDS/remove-entry.js" $name
       ;;
+    # builds database
     "build")
       args=( "$@" );
       delete=$1;
       file=( "${args[@]/$delete}" );
       node "$COMMANDS/build.js"  $file
       ;;
+    # none of the above, prints instructions to user
     *)
       echo "Invalid input, add one of the following commands:
     'name' - query for name(s)
