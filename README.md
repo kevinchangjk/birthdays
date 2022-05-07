@@ -8,16 +8,24 @@ With this, you can make it slightly less tedious by letting your _terminal_ remi
 
 Clone this repository in whatever directory you like, though I would recommend cloning it where your terminal configs are too.
 
-To ensure full functionality, make sure that you have the following node modules as well:
+For full functionality, this package uses the following modules:
 
 - `fs`: part of Node.js core
 - `module`: local to npm
 - `csv-parse`: used for reading from the `.csv` files
 - `prompt-sync`: used for reading inputs from user
 
+You can simply run the following command (if you have npm) to ensure that you have them for this function:
+
+```bash
+npm install
+```
+
+If you do not have npm (or are unsure), then do check out [this guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
 ## Setup
 
-1. Install the package by cloning the repository
+1. Install the package by cloning the repository, and run `npm install`.
 2. `cd` into the package directory, and run the following command in your shell:
    ```bash
    source setup
