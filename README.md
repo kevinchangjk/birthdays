@@ -17,12 +17,11 @@ To ensure full functionality, make sure that you have the following node modules
 ## Setup
 
 1. Install the package by cloning the repository
-2. `cd` into the package directory and run the following command:
-
+2. `cd` into the package directory, and run the following command in your shell:
    ```bash
    source setup
    ```
-
+   This allows you to use the `birthdays` function for step 3 and 4, and saves the path to the package directory for step 5.
 3. Create a `.csv` file containing all birthdays you want to store, together with the name of the person, and additional notes if necessary, and store it inside the package directory.
 4. Run the following command to initialise the data. Suppose your `.csv` file is saved as `birthdays.csv`, then you should run:
 
@@ -32,10 +31,15 @@ To ensure full functionality, make sure that you have the following node modules
 
    Or replace `./birthdays.csv` with whatever is the relative path to the file.
 
-5. Add this line to your `.bashrc`, or whichever shell config file you are using.
+5. Add these lines to your `.bashrc`, or whichever shell config file you are using. You will need the absolute path to the package directory, which will be saved as the variable `$BIRTHDAYS_DIR` after step 2.
 
    ```bash
-   birthdays date
+   # if my url is ~/.bash/birthdays, I can replace the line below with
+   # cd ~/.bash/birthdays;
+   cd $BIRTHDAYS_DIR;
+   source setup;
+   cd -;
+   birthdays date;
    ```
 
    This will check the current date with the birthday entries, and display any entries that have their birthday today.

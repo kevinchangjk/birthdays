@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # url to package directory
-BIRTHDAYS=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
-SRC="$BIRTHDAYS/src";
+export BIRTHDAYS_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
+SRC="$BIRTHDAYS_DIR/src";
 export COMMANDS="$SRC/commands";
 
 # sources the function script, to use the "birthdays" function
@@ -12,7 +12,7 @@ source $SRC/function;
 export BIRTHDAYS_FILE="birthdays.json";
 
 # absolute url for the birhdays file
-export BIRTHDAYS_URL="$BIRTHDAYS/$BIRTHDAYS_FILE";
+export BIRTHDAYS_URL="$BIRTHDAYS_DIR/$BIRTHDAYS_FILE";
 
 # collection of emojis used to celebrate
 export BIRTHDAY_EMOJIS="🔥💀👻💩🤡😈👽🤖💃🐒🐍🌈🌚🚓🚑🚀🔞";
