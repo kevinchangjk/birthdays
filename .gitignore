@@ -1,3 +1,4 @@
 .DS_Store
-birthdays.json
 node_modules/
+birthdays.json
+birthdays.csv
