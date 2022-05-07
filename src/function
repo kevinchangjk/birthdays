@@ -9,19 +9,28 @@ birthdays () {
       node "$COMMANDS/query-name.js" $names
       ;;
     "date")
-
+      args=( "$@" );
+      delete=$1;
+      dates=( "${args[@]/$delete}" );
+      node "$COMMANDS/query-date.js" $dates
       ;;
     "list")
-      
+      node "$COMMANDS/enumerate.js"
       ;;
     "add")
-
+      node "$COMMANDS/add-entry.js"
       ;;
     "remove")
-
+      args=( "$@" );
+      delete=$1;
+      name=( "${args[@]/$delete}" );
+      node "$COMMANDS/remove-entry.js" $name
       ;;
     "build")
-
+      args=( "$@" );
+      delete=$1;
+      file=( "${args[@]/$delete}" );
+      node "$COMMANDS/build.js"  $file
       ;;
     *)
       echo "Invalid input, add one of the following commands:

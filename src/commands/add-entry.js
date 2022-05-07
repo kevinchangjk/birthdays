@@ -10,8 +10,19 @@ let date;
 let info;
 let validEntry = false;
 while (!validEntry) {
-  console.log("");
-  name = prompt("Name: ");
+  console.log(
+    "\n----------------------------------------\nInput the details below"
+  );
+  let validName = false;
+  while (!validName) {
+    console.log("");
+    name = prompt("Name: ");
+    if (name.length > 0) {
+      validName = true;
+    } else {
+      console.log("Enter a name");
+    }
+  }
   let validDate = false;
   while (!validDate) {
     console.log("");
@@ -46,6 +57,9 @@ while (!validEntry) {
   }
   console.log("");
   info = prompt("Additional Information: ");
+  if (info == "") {
+    info = "Nothing actually";
+  }
   let validConfirm = false;
   while (!validConfirm) {
     console.log("");

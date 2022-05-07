@@ -1,4 +1,5 @@
 import { queryDate } from "../user-api.js";
+import { Birthday } from "../structures/birthday.js";
 
 function formatDate(num) {
   const actual = num + 1;
@@ -27,7 +28,9 @@ if (args.length == 0) {
 } else {
   for (const arg of args) {
     const bucket = await queryDate(arg);
+    console.log("\n----------------------------------------");
     if (bucket.length === 0) {
+      const temp = new Birthday("", arg, "");
       console.log(`No birthdays found on ${temp.niceDate()}`);
     } else {
       console.log(`On ${bucket[0].niceDate()}: `);
