@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# TODO: add setup of birthdays file name here
-
 BIRTHDAYS=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
 SRC="$BIRTHDAYS/src";
 export COMMANDS="$SRC/commands";
 
 source $SRC/function;
+
+export BIRTHDAYS_FILE="birthdays.json";
+export BIRTHDAYS_URL="$BIRTHDAYS/$BIRTHDAYS_FILE";

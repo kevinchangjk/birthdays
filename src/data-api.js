@@ -4,11 +4,8 @@ import { BirthDatabase } from "./structures/birth-database.js";
 import * as path from "path";
 import { fileURLToPath } from "url";
 
-// file name for birthday database, by default: "birthdays.json"
-export const fileName = "birthdays.json";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const fileURL = path.join(__dirname, "..", fileName);
+export const fileName = process.env.BIRTHDAYS_FILE;
+const fileURL = process.env.BIRTHDAYS_URL;
 
 // reads a .csv file to generate a database of birthdays
 export async function createDatabase(file) {
