@@ -14,20 +14,80 @@ To ensure full functionality, make sure that you have the following node modules
 - `module`: local to npm
 - `csv-parse`: used for reading from the `.csv` files
 
+## Setup
+
+1. Install the package by cloning the repository
+2. `cd` into the package directory and run the following command:
+
+   ```bash
+   source setup
+   ```
+
+3. Create a `.csv` file containing all birthdays you want to store, together with the name of the person, and additional notes if necessary, and store it inside the package directory.
+4. Run the following command to initialise the data. Suppose your `.csv` file is saved as `birthdays.csv`, then you should run:
+
+   ```bash
+   birthdays build ./birthdays.csv
+   ```
+
+   Or replace `./birthdays.csv` with whatever is the relative path to the file.
+
+5. Add this line to your `.bashrc`, or whichever shell config file you are using.
+
+   ```bash
+   birthdays date
+   ```
+
+   This will check the current date with the birthday entries, and display any entries that have their birthday today.
+
+That's it! Good luck and have fun!
+
 ## Usage
 
-Create a `.csv` file containing all birthdays you want to store, together with the name of the person, and additional notes if necessary.
+The package supports a few operations to interact with the database.
 
-Query the data through:
+- Build: This is what you have to use during the setup, to initialise the data by inputting the `.csv` file to use
+  ```bash
+  birthdays build ./example.csv
+  ```
+- Search by name: Input one or more names (or just strings actually), and get entries that match the names
+  ```bash
+  birthdays name "Kevin" "chang" "kevinchangjk"
+  ```
+- Search by date: Input one or more dates (in DDMM format), and get entries that match the dates
+  ```bash
+  birthdays date 0101 0908 2512
+  ```
+- List: Prints out all entries that you have saved
+  ```bash
+  birthdays list
+  ```
+- Add entry: Prompts you for details like the name, the birthday, additional notes, and saves the entry
+  ```bash
+  birthdays add
+  ```
+- Remove entry: Input a name or string to search, and prompts you to pick and remove from the entries that match your search
+  ```bash
+  birthdays remove "Kevin"
+  ```
+- Celebrate: Checks with today's date and celebrates for whoever has their birthday today
+  - Typically this wouldn't be called by the user explicitly, but it can be done by running:
+    ```bash
+    birthdays date
+    ```
 
-1. Search by name: Input a name, and get the stored data and additional info
-2. Search by date: Input a date, and get the stored name and additional info
+## Future Developments
 
-Additionally, terminal will run the script to check if today's date is anyone's birthday, and print the result onto the terminal as a reminder.
+This was a very fast and simple project. I really wasn't aiming for a lot of extensive functionality when I made this.
+
+Looking at how I might use this, I can see myself potentially working towards two other directions in the future for this package:
+
+1. An active reminder system, in which you can highlight entries of higher priority, and state how many days in advance you want to be reminded about it.
+
+   - The system will then, on that many days beforehand, and every day afterwards, remind you in the terminal.
+
+2. Expanding to more events than birthdays. So then it would be able to store items such as holidays, anniversaries (for people who are always getting scolded for forgetting their anniversaries).
 
 ## TODO
 
-1. Add the sorting functionality to the database
-2. Create the querying function
-3. Create bash script for terminal
-4. Add your own birthdays to it
+1. Add your own birthdays to it
