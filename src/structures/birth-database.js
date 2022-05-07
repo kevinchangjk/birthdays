@@ -85,11 +85,12 @@ export class BirthDatabase {
 
   // returns all entries that the search string is included in the name of the entry
   queryName(name) {
+    const searchString = name.toLowerCase();
     const included = [];
     for (let i = 0; i < 366; i++) {
       const bucket = this[i];
       for (const birthday of bucket) {
-        if (birthday.name.includes(name)) {
+        if (birthday.name.toLowerCase().includes(searchString)) {
           included.push(birthday);
         }
       }

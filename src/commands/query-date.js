@@ -25,7 +25,7 @@ const args = process.argv.slice(2);
 // if no argument given, then it queries using today's date, and celebrates
 if (args.length == 0) {
   const date = getDate();
-  const bucket = queryDate(date);
+  const bucket = await queryDate(date);
   if (bucket.length > 0) {
     console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
     bucket.forEach((birthday) => birthday.celebrate());

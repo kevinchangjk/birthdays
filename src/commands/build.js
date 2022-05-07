@@ -13,10 +13,10 @@ if (args.length != 1) {
   console.log("Please input a single .csv file");
 } else {
   const csvFile = args[0];
-  fs.access(fileURL, function (err) {
+  fs.access(fileURL, async function (err) {
     if (err) {
       // file doesn't exist, create immediately
-      buildData(csvFile);
+      await buildData(csvFile);
       console.log(`Created ${fileName} from ${csvFile}`);
     } else {
       // file already exists, check if user wishes to overwrite
@@ -34,7 +34,7 @@ if (args.length != 1) {
           console.log("Cancelling build...");
           validInput = true;
         } else if (confirmation.toLowerCase() == "y") {
-          buildData(csvFile);
+          await buildData(csvFile);
           console.log(`Overwrote and recreated ${fileName} from ${csvFile}`);
           validInput = true;
         } else {

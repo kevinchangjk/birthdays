@@ -101,25 +101,11 @@ function properDate(date) {
 
 // literally picks one of the below emojis randomly
 function randomEmoji() {
-  const choices = [
-    "🔥",
-    "💀",
-    "👻",
-    "💩",
-    "🤡",
-    "😈",
-    "👽",
-    "🤖",
-    "💃",
-    "🐒",
-    "🐍",
-    "🌈",
-    "🌚",
-    "🚓",
-    "🚑",
-    "🚀",
-    "🔞",
-  ];
+  const emojis = process.env.BIRTHDAY_EMOJIS;
+  const choices = [];
+  for (const emoji of emojis) {
+    choices.push(emoji);
+  }
   return choices[Math.floor(Math.random() * choices.length)];
 }
 

@@ -46,35 +46,46 @@ That's it! Good luck and have fun!
 
 The package supports a few operations to interact with the database.
 
-- Build: This is what you have to use during the setup, to initialise the data by inputting the `.csv` file to use
+- **Build**: This is what you have to use during the setup, to initialise the data by inputting the `.csv` file to use.
   ```bash
   birthdays build ./example.csv
   ```
-- Search by name: Input one or more names (or just strings actually), and get entries that match the names
+- **Search by Name**: Input one or more names (or just strings actually), and get entries that match the names. This operation is case-insensitive.
   ```bash
   birthdays name "Kevin" "chang" "kevinchangjk"
   ```
-- Search by date: Input one or more dates (in DDMM format), and get entries that match the dates
+- **Search by Date**: Input one or more dates (in DDMM format), and get entries that match the dates.
   ```bash
   birthdays date 0101 0908 2512
   ```
-- List: Prints out all entries that you have saved
+- **List**: Prints out all entries that you have saved.
   ```bash
   birthdays list
   ```
-- Add entry: Prompts you for details like the name, the birthday, additional notes, and saves the entry
+- **Add entry**: Prompts you for details like the name, the birthday, additional notes, and saves the entry.
   ```bash
   birthdays add
   ```
-- Remove entry: Input a name or string to search, and prompts you to pick and remove from the entries that match your search
+- **Remove entry**: Input a name or string to search, and prompts you to pick and remove from the entries that match your search.
   ```bash
   birthdays remove "Kevin"
   ```
-- Celebrate: Checks with today's date and celebrates for whoever has their birthday today
+- **Celebrate**: Checks with today's date and celebrates for whoever has their birthday today.
   - Typically this wouldn't be called by the user explicitly, but it can be done by running:
     ```bash
     birthdays date
     ```
+
+### Customisability
+
+There ain't a lot of options to customize to be honest. But since you got the entire repo cloned, if you really wanted to you could just rewrite everything.
+
+- **File Name**:
+  By default, the file name for the JSON file that will act as the database is `birthdays.json`. This file will be generated and kept in the main package directory.
+  You can change this behaviour, along with the file name itself, by going into `setup` in the main directory, and looking at line 11 (and 14 for the URL). You can then change the variables accordingly.
+
+- **Emojis**:
+  When the terminal celebrates, it randomly generates an emoji from a list. This list can also be found in `setup`, at line 18. You can edit this list to your own liking, or even edit the celebrate function in `birthday.js` if you like.
 
 ## Future Developments
 

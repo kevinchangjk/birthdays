@@ -13,3 +13,6 @@ export BIRTHDAYS_FILE="birthdays.json";
 
 # absolute url for the birhdays file
 export BIRTHDAYS_URL="$BIRTHDAYS/$BIRTHDAYS_FILE";
+
+# collection of emojis used to celebrate
+export BIRTHDAY_EMOJIS="🔥💀👻💩🤡😈👽🤖💃🐒🐍🌈🌚🚓🚑🚀🔞";
