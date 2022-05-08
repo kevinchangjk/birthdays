@@ -26,6 +26,7 @@ if (args.length == 0) {
   const date = getTodaysDate();
   const bucket = await queryDate(date);
   if (bucket.length > 0) {
+    console.log("----------------------------------------");
     console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
     bucket.forEach((birthday) => birthday.celebrate());
   }
