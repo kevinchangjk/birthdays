@@ -3,19 +3,18 @@ import { Birthday } from "../structures/birthday.js";
 
 // formats a pure number to a string representating dates
 function formatDate(num) {
-  const actual = num + 1;
-  if (actual < 10) {
-    return "0" + actual.toString();
+  if (num < 10) {
+    return "0" + num.toString();
   } else {
-    return actual.toString();
+    return num.toString();
   }
 }
 
 // gets today's date
-function getDate() {
+function getTodaysDate() {
   const today = new Date();
-  const day = formatDate(today.getDay());
-  const month = formatDate(today.getMonth());
+  const day = formatDate(today.getDate());
+  const month = formatDate(today.getMonth() + 1);
   return day + month;
 }
 
@@ -24,7 +23,7 @@ const args = process.argv.slice(2);
 
 // if no argument given, then it queries using today's date, and celebrates
 if (args.length == 0) {
-  const date = getDate();
+  const date = getTodaysDate();
   const bucket = await queryDate(date);
   if (bucket.length > 0) {
     console.log(`\n🎉🎉🎉 Today, on ${bucket[0].niceDate()} 🎉🎉🎉\n`);
