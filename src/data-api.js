@@ -27,7 +27,7 @@ export async function createDatabase(file) {
 
 // writes to the database, using fileURL
 export async function writeDatabase(database) {
-  const res = JSON.stringify(database);
+  const res = JSON.stringify(database, null, 2);
   fs.writeFile(fileURL, res, function (error, result) {
     if (error) {
       console.log(error.message);
