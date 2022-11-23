@@ -46,7 +46,8 @@ birthdays () {
     'date' query for date(s)
     'list' - list out all recorded entries
     'add' - add an entry for a birthday
-    'remove' remove an entry for a birthday";
+    'remove' - remove an entry for a birthday
+    'build' - builds the json database of birthdays";
       ;;
   esac
 }
