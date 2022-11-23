@@ -66,6 +66,7 @@ while (!validEntry) {
   while (!validConfirm) {
     console.log("");
     const confirmation = prompt("Confirm entry? (y/n/q) ");
+    console.log("");
     if (confirmation.toLowerCase() == "q") {
       console.log("Cancelling entry...");
       validConfirm = true;
